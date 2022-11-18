@@ -247,7 +247,7 @@ std::string HttpRequest::createRequest()
   if (!ifModSinceHeader_.empty()) {
     builtinHds.emplace_back("If-Modified-Since:", ifModSinceHeader_);
   }
-  if (!true) {
+  if (!noWantDigest_) {
     // Send Want-Digest header field with only limited hash algorithms:
     // SHA-512, SHA-256, and SHA-1.
     std::string wantDigest;
