@@ -163,7 +163,7 @@ std::string DefaultBtAnnounce::getAnnounceUrl()
   uri += uriHasQuery(uri) ? "&" : "?";
   unsigned char* key_str(new unsigned char[keyLen]);
     for (uint8_t i=0;i<keyLen;++i){
-      *(key_str+i) = *(bittorrent::getStaticPeerId() + PEER_ID_LENGTH - i);
+      *(key_str+i) = *(bittorrent::getStaticPeerId() + PEER_ID_LENGTH - i -1);
   }
   uri +=
       fmt("info_hash=%s&"
