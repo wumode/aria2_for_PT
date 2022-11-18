@@ -161,6 +161,10 @@ std::string DefaultBtAnnounce::getAnnounceUrl()
   const size_t keyLen = 8;
   std::string uri = announceList_.getAnnounce();
   uri += uriHasQuery(uri) ? "&" : "?";
+  unsigned char* key_str(new unsigned char[keyLen]);
+    for (uint8_t i=0;i<keyLen;++i){
+      *(key_str+i) = *(bittorrent::getStaticPeerId() + PEER_ID_LENGTH - i -1);
+  }
   uri +=
       fmt("info_hash=%s&"
           "peer_id=%s&"
@@ -178,9 +182,10 @@ std::string DefaultBtAnnounce::getAnnounceUrl()
               .c_str(),
           stat.getSessionUploadLength(), stat.getSessionDownloadLength(), left,
           util::percentEncode(
-              bittorrent::getStaticPeerId() + PEER_ID_LENGTH - keyLen, keyLen)
+              key_str, keyLen)
               .c_str(),
           numWant);
+  delete [] key_str;
   if (tcpPort_) {
     uri += fmt("&port=%u", tcpPort_);
   }

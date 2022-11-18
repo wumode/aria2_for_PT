@@ -87,8 +87,8 @@ const char C_COMMENT[] = "comment";
 const char C_COMMENT_UTF8[] = "comment.utf-8";
 const char C_CREATED_BY[] = "created by";
 
-const char DEFAULT_PEER_ID_PREFIX[] = "aria2-";
-const char DEFAULT_PEER_AGENT[] = "aria2/" PACKAGE_VERSION;
+const char DEFAULT_PEER_ID_PREFIX[] = "-UT2210-";
+const char DEFAULT_PEER_AGENT[] = "uTorrent/2210(25302)";
 } // namespace
 
 const std::string MULTI("multi");
