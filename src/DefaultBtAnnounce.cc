@@ -161,7 +161,7 @@ std::string DefaultBtAnnounce::getAnnounceUrl()
   const size_t keyLen = 8;
   std::string uri = announceList_.getAnnounce();
   uri += uriHasQuery(uri) ? "&" : "?";
-  char* key_str(new char[keyLen]);
+  unsigned char* key_str(new char[keyLen]);
     for (uint8_t i=0;i<keyLen;++i){
       *(key_str+i) = *(bittorrent::getStaticPeerId() + PEER_ID_LENGTH - i);
   }
